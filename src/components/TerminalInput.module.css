@@ -1,0 +1,82 @@
+.wrap {
+  flex-shrink: 0;
+  padding: 14px 28px 18px;
+  border-top: 1px solid var(--border2);
+  background: rgba(5,5,8,0.98);
+  cursor: text;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.prompt {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.promptUser { color: var(--accent2); }
+.promptAt   { color: var(--text3); }
+.promptHost { color: var(--cyan); }
+.promptSep  { color: var(--text3); }
+
+.inputWrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  letter-spacing: .03em;
+  caret-color: var(--accent2);
+}
+
+.input::placeholder { color: var(--text3); }
+.input:disabled { opacity: .5; cursor: not-allowed; }
+
+.ghost {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  pointer-events: none;
+  opacity: .4;
+}
+
+.cursor {
+  width: 8px;
+  height: 16px;
+  background: var(--accent2);
+  animation: blink .9s step-end infinite;
+  flex-shrink: 0;
+  margin-left: 2px;
+  border-radius: 1px;
+}
+
+.hint {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  color: var(--text3);
+  letter-spacing: .06em;
+  padding-left: 148px;
+}
+
+.hint span {
+  color: var(--accent3);
+}
