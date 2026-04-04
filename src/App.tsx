@@ -142,7 +142,7 @@ export default function App() {
         </main>
 
         <footer className={styles.footer}>
-          BUILT BY <span data-brand>MR. DARKNOVA</span> — <span data-alias>VICTOR KUMBA</span> · AI README GENERATOR · © 2025
+          BUILT BY <span data-brand>MR. DARKNOVA</span> — <span data-alias>VICTOR KUMBA</span> · AI README GENERATOR · © 2026
         </footer>
       </div>
     </>
