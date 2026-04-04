@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Background } from './components/Background';
 import { Header } from './components/Header';
 import { UploadZone } from './components/UploadZone';
@@ -8,11 +8,13 @@ import { ReadmeOutput } from './components/ReadmeOutput';
 import { useCursor } from './hooks/useCursor';
 import { scanZip, scanSingleFile, extractProjectInfo, buildPrompt } from './utils/scanner';
 import { generateReadme } from './utils/api';
+import { initBrand } from './utils/brand';
 import type { Theme, Stage } from './types';
 import styles from './App.module.css';
 
 export default function App() {
   useCursor();
+  useEffect(() => { initBrand(); }, []);
 
   const [stage, setStage]       = useState<Stage>('upload');
   const [theme, setTheme]       = useState<Theme>('purple');
@@ -98,7 +100,6 @@ export default function App() {
               </div>
 
               <ThemePicker value={theme} onChange={setTheme} />
-
               <UploadZone onFile={handleFile} />
 
               <div className={styles.features}>
@@ -118,11 +119,7 @@ export default function App() {
           )}
 
           {(stage === 'scanning' || stage === 'generating') && (
-            <ScanProgress
-              stage={stage}
-              files={scannedFiles}
-              current={scanStep}
-            />
+            <ScanProgress stage={stage} files={scannedFiles} current={scanStep} />
           )}
 
           {stage === 'done' && (
@@ -145,7 +142,7 @@ export default function App() {
         </main>
 
         <footer className={styles.footer}>
-          BUILT BY <span>MR. DARKNOVA</span> — <span>VICTOR KUMBA</span> · AI README GENERATOR · © 2025
+          BUILT BY <span data-brand>MR. DARKNOVA</span> — <span data-alias>VICTOR KUMBA</span> · AI README GENERATOR · © 2025
         </footer>
       </div>
     </>

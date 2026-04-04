@@ -13,8 +13,10 @@ export function Header() {
             </svg>
           </div>
           <div className={styles.logoText}>
-            <span className={`${styles.logoName} glitch`} data-text="MR. DARKNOVA">MR. DARKNOVA</span>
-            <span className={styles.logoSub}>README GENERATOR — AI POWERED</span>
+            <span className={`${styles.logoName} glitch`} data-text="MR. DARKNOVA">
+              <span data-brand>MR. DARKNOVA</span>
+            </span>
+            <span className={styles.logoSub}>README GENERATOR — <span data-alias>VICTOR KUMBA</span></span>
           </div>
         </div>
         <div className={styles.badge}>
