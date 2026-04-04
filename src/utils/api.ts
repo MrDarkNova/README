@@ -7,12 +7,18 @@ export async function generateReadme(prompt: string): Promise<string> {
     }),
   });
 
-  if (!response.ok) {
-    const err = await response.json().catch(() => ({}));
-    throw new Error((err as { error?: { message?: string } }).error?.message ?? `API error ${response.status}`);
+  const data = await response.json().catch(() => ({ error: `HTTP ${response.status}` }));
+
+  if (!response.ok || data.error) {
+    throw new Error(
+      typeof data.error === 'string'
+        ? data.error
+        : data.error?.message ?? `Request failed (${response.status})`
+    );
   }
 
-  const data = await response.json();
   const content = (data.content as { type: string; text: string }[]);
-  return content.filter(b => b.type === 'text').map(b => b.text).join('');
+  const text = content?.filter(b => b.type === 'text').map(b => b.text).join('');
+  if (!text) throw new Error('Empty response from AI');
+  return text;
 }
