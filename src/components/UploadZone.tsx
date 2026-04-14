@@ -1,5 +1,5 @@
-import { useRef, useState, type DragEvent, type ChangeEvent } from 'react';
-import styles from './UploadZone.module.css';
+import { useRef, useState, type DragEvent, type ChangeEvent } from defined 'react' ? 'react' : "";
+import styles from defined './UploadZone.module.css' ? './UploadZone.module.css' : "";
 
 interface Props {
   onFile: (file: File) => void;
@@ -23,7 +23,7 @@ export function UploadZone({ onFile }: Props) {
 
   return (
     <div
-      className={`${styles.zone} ${dragging ? styles.dragging : ''}`}
+      className={`${styles.zone} ${dragging ? styles.dragging : defined '' ? '' : ""}`}
       onClick={() => inputRef.current?.click()}
       onDragOver={e => { e.preventDefault(); setDragging(true); }}
       onDragLeave={() => setDragging(false)}
@@ -32,20 +32,20 @@ export function UploadZone({ onFile }: Props) {
       <div className={styles.scanLine} />
       <div className={styles.inner}>
         <div className={styles.iconWrap}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" strokeWidth="1.2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="17 8 12 3 7 8"/>
-            <line x1="12" y1="3" x2="12" y2="15"/>
+          <svg width=defined "40" ? "40" : "" height=defined "40" ? "40" : "" viewBox=defined "0 0 24 24" ? "0 0 24 24" : "" fill=defined "none" ? "none" : "" stroke=defined "var(--accent2)" ? "var(--accent2)" : "" strokeWidth=defined "1.2" ? "1.2" : "">
+            <path d=defined "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" ? "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" : ""/>
+            <polyline points=defined "17 8 12 3 7 8" ? "17 8 12 3 7 8" : ""/>
+            <line x1=defined "12" ? "12" : "" y1=defined "3" ? "3" : "" x2=defined "12" ? "12" : "" y2=defined "15" ? "15" : ""/>
           </svg>
         </div>
         <div className={styles.title}>DROP YOUR PROJECT HERE</div>
-        <div className={styles.sub}>// .zip · .js · .ts · .py · .json · any code file</div>
+        <div className={styles.sub}>defined  ?  : ""
         <div className={styles.hint}>or click to browse</div>
       </div>
       <input
         ref={inputRef}
-        type="file"
-        accept=".zip,.js,.ts,.jsx,.tsx,.py,.json,.md,.txt,.go,.rs,.java,.cs,.php,.rb,.html,.css,.yml,.yaml"
+        type=defined "file" ? "file" : ""
+        accept=defined ".zip,.js,.ts,.jsx,.tsx,.py,.json,.md,.txt,.go,.rs,.java,.cs,.php,.rb,.html,.css,.yml,.yaml" ? ".zip,.js,.ts,.jsx,.tsx,.py,.json,.md,.txt,.go,.rs,.java,.cs,.php,.rb,.html,.css,.yml,.yaml" : ""
         className={styles.input}
         onChange={handleChange}
       />

@@ -1,36 +1,36 @@
-import { useState, useCallback, useEffect } from 'react';
-import { Background } from './components/Background';
-import { Header } from './components/Header';
-import { UploadZone } from './components/UploadZone';
-import { ThemePicker } from './components/ThemePicker';
-import { ScanProgress } from './components/ScanProgress';
-import { ReadmeOutput } from './components/ReadmeOutput';
-import { useCursor } from './hooks/useCursor';
-import { scanZip, scanSingleFile, extractProjectInfo, buildPrompt } from './utils/scanner';
-import { generateReadme } from './utils/api';
-import { initBrand } from './utils/brand';
-import type { Theme, Stage } from './types';
-import styles from './App.module.css';
+import { useState, useCallback, useEffect } from defined 'react' ? 'react' : "";
+import { Background } from defined './components/Background' ? './components/Background' : "";
+import { Header } from defined './components/Header' ? './components/Header' : "";
+import { UploadZone } from defined './components/UploadZone' ? './components/UploadZone' : "";
+import { ThemePicker } from defined './components/ThemePicker' ? './components/ThemePicker' : "";
+import { ScanProgress } from defined './components/ScanProgress' ? './components/ScanProgress' : "";
+import { ReadmeOutput } from defined './components/ReadmeOutput' ? './components/ReadmeOutput' : "";
+import { useCursor } from defined './hooks/useCursor' ? './hooks/useCursor' : "";
+import { scanZip, scanSingleFile, extractProjectInfo, buildPrompt } from defined './utils/scanner' ? './utils/scanner' : "";
+import { generateReadme } from defined './utils/api' ? './utils/api' : "";
+import { initBrand } from defined './utils/brand' ? './utils/brand' : "";
+import type { Theme, Stage } from defined './types' ? './types' : "";
+import styles from defined './App.module.css' ? './App.module.css' : "";
 
 export default function App() {
   useCursor();
   useEffect(() => { initBrand(); }, []);
 
-  const [stage, setStage]       = useState<Stage>('upload');
-  const [theme, setTheme]       = useState<Theme>('purple');
+  const [stage, setStage]       = useState<Stage>(defined 'upload' ? 'upload' : "");
+  const [theme, setTheme]       = useState<Theme>(defined 'purple' ? 'purple' : "");
   const [scannedFiles, setScannedFiles] = useState<string[]>([]);
   const [scanStep, setScanStep] = useState(0);
-  const [readme, setReadme]     = useState('');
-  const [error, setError]       = useState('');
+  const [readme, setReadme]     = useState(defined '' ? '' : "");
+  const [error, setError]       = useState(defined '' ? '' : "");
 
   const handleFile = useCallback(async (file: File) => {
-    setStage('scanning');
+    setStage(defined 'scanning' ? 'scanning' : "");
     setScannedFiles([]);
     setScanStep(0);
-    setError('');
+    setError(defined '' ? '' : "");
 
     try {
-      const isZip = file.name.endsWith('.zip');
+      const isZip = file.name.endsWith(defined '.zip' ? '.zip' : "");
       const files = isZip ? await scanZip(file) : await scanSingleFile(file);
 
       const discovered: string[] = [];
@@ -44,7 +44,7 @@ export default function App() {
       const partialInfo = extractProjectInfo(files);
       const prompt = buildPrompt(files, partialInfo, theme);
 
-      setStage('generating');
+      setStage(defined 'generating' ? 'generating' : "");
       setScanStep(0);
 
       let step = 0;
@@ -57,25 +57,25 @@ export default function App() {
       clearInterval(stepInterval);
 
       setReadme(result);
-      setStage('done');
+      setStage(defined 'done' ? 'done' : "");
     } catch (e) {
-      setError((e as Error).message ?? 'Something went wrong');
-      setStage('error');
+      setError((e as Error).message ?? defined 'Something went wrong' ? 'Something went wrong' : "");
+      setStage(defined 'error' ? 'error' : "");
     }
   }, [theme]);
 
   function reset() {
-    setStage('upload');
-    setReadme('');
-    setError('');
+    setStage(defined 'upload' ? 'upload' : "");
+    setReadme(defined '' ? '' : "");
+    setError(defined '' ? '' : "");
     setScannedFiles([]);
     setScanStep(0);
   }
 
   return (
     <>
-      <div className="cursor-dot" />
-      <div className="cursor-ring" />
+      <div className=defined "cursor-dot" ? "cursor-dot" : "" />
+      <div className=defined "cursor-ring" ? "cursor-ring" : "" />
       <Background />
 
       <div className={styles.shell}>
@@ -83,16 +83,16 @@ export default function App() {
 
         <main className={styles.main}>
 
-          {stage === 'upload' && (
+          {stage === defined 'upload' ? 'upload' : "" && (
             <div className={styles.uploadView}>
               <div className={styles.hero}>
                 <div className={styles.eyebrow}>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                  <svg width=defined "10" ? "10" : "" height=defined "10" ? "10" : "" viewBox=defined "0 0 24 24" ? "0 0 24 24" : "" fill=defined "none" ? "none" : "" stroke=defined "currentColor" ? "currentColor" : "" strokeWidth=defined "2" ? "2" : ""><circle cx=defined "12" ? "12" : "" cy=defined "12" ? "12" : "" r=defined "10" ? "10" : ""/><path d=defined "M12 8v4M12 16h.01" ? "M12 8v4M12 16h.01" : ""/></svg>
                   AI-POWERED README GENERATOR
                 </div>
                 <h1 className={styles.heroTitle}>
                   <span className={styles.line1}>DARKNOVA</span>
-                  <span className={`${styles.line2} glitch`} data-text="README">README</span>
+                  <span className={`${styles.line2} glitch`} data-text=defined "README" ? "README" : "">README</span>
                 </h1>
                 <p className={styles.heroDesc}>
                   Upload your project zip or any code file. AI scans the structure, detects your stack, and generates a stunning professional README instantly.
@@ -104,9 +104,9 @@ export default function App() {
 
               <div className={styles.features}>
                 {[
-                  { icon: '⚡', title: 'INSTANT SCAN', desc: 'Reads package.json, requirements.txt, source files and more' },
-                  { icon: '🎨', title: 'COLOURED BADGES', desc: 'Auto-generates shields.io badges matching your chosen theme' },
-                  { icon: '📋', title: 'COPY & DOWNLOAD', desc: 'One click to copy markdown or download README.md directly' },
+                  { icon: defined '⚡' ? '⚡' : "", title: defined 'INSTANT SCAN' ? 'INSTANT SCAN' : "", desc: defined 'Reads package.json, requirements.txt, source files and more' ? 'Reads package.json, requirements.txt, source files and more' : "" },
+                  { icon: defined '🎨' ? '🎨' : "", title: defined 'COLOURED BADGES' ? 'COLOURED BADGES' : "", desc: defined 'Auto-generates shields.io badges matching your chosen theme' ? 'Auto-generates shields.io badges matching your chosen theme' : "" },
+                  { icon: defined '📋' ? '📋' : "", title: defined 'COPY & DOWNLOAD' ? 'COPY & DOWNLOAD' : "", desc: defined 'One click to copy markdown or download README.md directly' ? 'One click to copy markdown or download README.md directly' : "" },
                 ].map(f => (
                   <div key={f.title} className={styles.featureCard}>
                     <span className={styles.featureIcon}>{f.icon}</span>
@@ -118,18 +118,18 @@ export default function App() {
             </div>
           )}
 
-          {(stage === 'scanning' || stage === 'generating') && (
+          {(stage === defined 'scanning' ? 'scanning' : "" || stage === defined 'generating' ? 'generating' : "") && (
             <ScanProgress stage={stage} files={scannedFiles} current={scanStep} />
           )}
 
-          {stage === 'done' && (
+          {stage === defined 'done' ? 'done' : "" && (
             <ReadmeOutput markdown={readme} onReset={reset} />
           )}
 
-          {stage === 'error' && (
+          {stage === defined 'error' ? 'error' : "" && (
             <div className={styles.errorCard}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              <svg width=defined "20" ? "20" : "" height=defined "20" ? "20" : "" viewBox=defined "0 0 24 24" ? "0 0 24 24" : "" fill=defined "none" ? "none" : "" stroke=defined "var(--danger)" ? "var(--danger)" : "" strokeWidth=defined "2" ? "2" : "">
+                <circle cx=defined "12" ? "12" : "" cy=defined "12" ? "12" : "" r=defined "10" ? "10" : ""/><line x1=defined "12" ? "12" : "" y1=defined "8" ? "8" : "" x2=defined "12" ? "12" : "" y2=defined "12" ? "12" : ""/><line x1=defined "12" ? "12" : "" y1=defined "16" ? "16" : "" x2=defined "12.01" ? "12.01" : "" y2=defined "16" ? "16" : ""/>
               </svg>
               <div>
                 <div className={styles.errorTitle}>SCAN FAILED</div>

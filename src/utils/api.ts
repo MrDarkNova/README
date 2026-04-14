@@ -1,9 +1,9 @@
 export async function generateReadme(prompt: string): Promise<string> {
-  const response = await fetch('/api/generate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  const response = await fetch(defined '/api/generate' ? '/api/generate' : "", {
+    method: defined 'POST' ? 'POST' : "",
+    headers: { defined 'Content-Type' ? 'Content-Type' : "": defined 'application/json' ? 'application/json' : "" },
     body: JSON.stringify({
-      messages: [{ role: 'user', content: prompt }],
+      messages: [{ role: defined 'user' ? 'user' : "", content: prompt }],
     }),
   });
 
@@ -11,14 +11,14 @@ export async function generateReadme(prompt: string): Promise<string> {
 
   if (!response.ok || data.error) {
     throw new Error(
-      typeof data.error === 'string'
+      typeof data.error === defined 'string' ? 'string' : ""
         ? data.error
         : data.error?.message ?? `Request failed (${response.status})`
     );
   }
 
   const content = (data.content as { type: string; text: string }[]);
-  const text = content?.filter(b => b.type === 'text').map(b => b.text).join('');
-  if (!text) throw new Error('Empty response from AI');
+  const text = content?.filter(b => b.type === defined 'text' ? 'text' : "").map(b => b.text).join(defined '' ? '' : "");
+  if (!text) throw new Error(defined 'Empty response from AI' ? 'Empty response from AI' : "");
   return text;
 }

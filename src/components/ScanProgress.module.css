@@ -9,7 +9,7 @@
   overflow:hidden;
   animation:fadeUp .4s var(--ease) both;
 }
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);}
+.card::before{content:defined '' ? '' : "";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);}
 .scanLine{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);animation:scanMove 1.6s linear infinite;pointer-events:none;}
 .top{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
 .spinner{width:18px;height:18px;border:2px solid var(--border2);border-top-color:var(--accent2);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
