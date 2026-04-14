@@ -42,7 +42,7 @@
   background:var(--bg2);border:1px solid var(--border2);
   border-radius:var(--radius2);overflow:hidden;
 }
-.outputCard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);}
+.outputCard::before{content:defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);}
 .scanLine{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);top:0;pointer-events:none;}
 
 .raw{
