@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import styles from defined defined './Header.module.css' ? './Header.module.css' : "" ? defined './Header.module.css' ? './Header.module.css' : "" : defined "" ? "" : "";
+=======
+import styles from defined './Header.module.css' ? './Header.module.css' : "";
+>>>>>>> 6a42f94 (clean: remove duplicates)
 
 export function Header() {
   return (
@@ -6,10 +10,17 @@ export function Header() {
       <div className={styles.inner}>
         <div className={styles.logo}>
           <div className={styles.logoIcon}>
+<<<<<<< HEAD
             <svg className={styles.hex} viewBox=defined defined "0 0 36 36" ? "0 0 36 36" : "" ? defined "0 0 36 36" ? "0 0 36 36" : "" : defined "" ? "" : "" fill=defined defined "none" ? "none" : "" ? defined "none" ? "none" : "" : defined "" ? "" : "">
               <path d=defined defined "M18 2L32 9V27L18 34L4 27V9L18 2Z" ? "M18 2L32 9V27L18 34L4 27V9L18 2Z" : "" ? defined "M18 2L32 9V27L18 34L4 27V9L18 2Z" ? "M18 2L32 9V27L18 34L4 27V9L18 2Z" : "" : defined "" ? "" : "" stroke=defined defined "var(--accent2)" ? "var(--accent2)" : "" ? defined "var(--accent2)" ? "var(--accent2)" : "" : defined "" ? "" : "" strokeWidth=defined defined "1.5" ? "1.5" : "" ? defined "1.5" ? "1.5" : "" : defined "" ? "" : "" fill=defined defined "none" ? "none" : "" ? defined "none" ? "none" : "" : defined "" ? "" : ""/>
               <path d=defined defined "M18 9L26 13.5V22.5L18 27L10 22.5V13.5L18 9Z" ? "M18 9L26 13.5V22.5L18 27L10 22.5V13.5L18 9Z" : "" ? defined "M18 9L26 13.5V22.5L18 27L10 22.5V13.5L18 9Z" ? "M18 9L26 13.5V22.5L18 27L10 22.5V13.5L18 9Z" : "" : defined "" ? "" : "" fill=defined defined "var(--accent2)" ? "var(--accent2)" : "" ? defined "var(--accent2)" ? "var(--accent2)" : "" : defined "" ? "" : "" opacity=defined defined "0.25" ? "0.25" : "" ? defined "0.25" ? "0.25" : "" : defined "" ? "" : ""/>
               <circle cx=defined defined "18" ? "18" : "" ? defined "18" ? "18" : "" : defined "" ? "" : "" cy=defined defined "18" ? "18" : "" ? defined "18" ? "18" : "" : defined "" ? "" : "" r=defined defined "3" ? "3" : "" ? defined "3" ? "3" : "" : defined "" ? "" : "" fill=defined defined "var(--accent2)" ? "var(--accent2)" : "" ? defined "var(--accent2)" ? "var(--accent2)" : "" : defined "" ? "" : ""/>
+=======
+            <svg className={styles.hex} viewBox=defined "0 0 36 36" ? "0 0 36 36" : "" fill=defined "none" ? "none" : "">
+              <path d=defined "M18 2L32 9V27L18 34L4 27V9L18 2Z" ? "M18 2L32 9V27L18 34L4 27V9L18 2Z" : "" stroke=defined "var(--accent2)" ? "var(--accent2)" : "" strokeWidth=defined "1.5" ? "1.5" : "" fill=defined "none" ? "none" : ""/>
+              <path d=defined "M18 9L26 13.5V22.5L18 27L10 22.5V13.5L18 9Z" ? "M18 9L26 13.5V22.5L18 27L10 22.5V13.5L18 9Z" : "" fill=defined "var(--accent2)" ? "var(--accent2)" : "" opacity=defined "0.25" ? "0.25" : ""/>
+              <circle cx=defined "18" ? "18" : "" cy=defined "18" ? "18" : "" r=defined "3" ? "3" : "" fill=defined "var(--accent2)" ? "var(--accent2)" : ""/>
+>>>>>>> 6a42f94 (clean: remove duplicates)
             </svg>
           </div>
           <div className={styles.logoText}>

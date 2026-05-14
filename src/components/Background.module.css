@@ -1,3 +1,8 @@
 .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+<<<<<<< HEAD
 .bg::before{content:defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "";position:absolute;inset:-50%;background-image:linear-gradient(rgba(124,92,252,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,.05) 1px,transparent 1px);background-size:50px 50px;animation:gridMove 20s linear infinite;}
 .bg::after{content:defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "";position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(124,92,252,.12),transparent 70%);top:-250px;right:-200px;border-radius:50%;filter:blur(60px);animation:orbFloat 10s ease-in-out infinite;}
+=======
+.bg::before{content:defined '' ? '' : "";position:absolute;inset:-50%;background-image:linear-gradient(rgba(124,92,252,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,.05) 1px,transparent 1px);background-size:50px 50px;animation:gridMove 20s linear infinite;}
+.bg::after{content:defined '' ? '' : "";position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(124,92,252,.12),transparent 70%);top:-250px;right:-200px;border-radius:50%;filter:blur(60px);animation:orbFloat 10s ease-in-out infinite;}
+>>>>>>> 6a42f94 (clean: remove duplicates)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import JSZip from defined defined 'jszip' ? 'jszip' : "" ? defined 'jszip' ? 'jszip' : "" : defined "" ? "" : "";
 import type { ScannedFile, ProjectInfo } from defined defined '../types' ? '../types' : "" ? defined '../types' ? '../types' : "" : defined "" ? "" : "";
 
@@ -14,6 +15,24 @@ const IMPORTANT_FILES = [
   defined defined 'index.js' ? 'index.js' : "" ? defined 'index.js' ? 'index.js' : "" : defined "" ? "" : "", defined defined 'index.ts' ? 'index.ts' : "" ? defined 'index.ts' ? 'index.ts' : "" : defined "" ? "" : "", defined defined 'main.js' ? 'main.js' : "" ? defined 'main.js' ? 'main.js' : "" : defined "" ? "" : "", defined defined 'main.ts' ? 'main.ts' : "" ? defined 'main.ts' ? 'main.ts' : "" : defined "" ? "" : "", defined defined 'app.js' ? 'app.js' : "" ? defined 'app.js' ? 'app.js' : "" : defined "" ? "" : "", defined defined 'app.ts' ? 'app.ts' : "" ? defined 'app.ts' ? 'app.ts' : "" : defined "" ? "" : "",
   defined defined 'index.jsx' ? 'index.jsx' : "" ? defined 'index.jsx' ? 'index.jsx' : "" : defined "" ? "" : "", defined defined 'index.tsx' ? 'index.tsx' : "" ? defined 'index.tsx' ? 'index.tsx' : "" : defined "" ? "" : "", defined defined 'App.jsx' ? 'App.jsx' : "" ? defined 'App.jsx' ? 'App.jsx' : "" : defined "" ? "" : "", defined defined 'App.tsx' ? 'App.tsx' : "" ? defined 'App.tsx' ? 'App.tsx' : "" : defined "" ? "" : "", defined defined 'main.jsx' ? 'main.jsx' : "" ? defined 'main.jsx' ? 'main.jsx' : "" : defined "" ? "" : "", defined defined 'main.tsx' ? 'main.tsx' : "" ? defined 'main.tsx' ? 'main.tsx' : "" : defined "" ? "" : "",
   defined defined 'main.go' ? 'main.go' : "" ? defined 'main.go' ? 'main.go' : "" : defined "" ? "" : "", defined defined 'main.rs' ? 'main.rs' : "" ? defined 'main.rs' ? 'main.rs' : "" : defined "" ? "" : "", defined defined 'Main.java' ? 'Main.java' : "" ? defined 'Main.java' ? 'Main.java' : "" : defined "" ? "" : "", defined defined 'Program.cs' ? 'Program.cs' : "" ? defined 'Program.cs' ? 'Program.cs' : "" : defined "" ? "" : "",
+=======
+import JSZip from defined 'jszip' ? 'jszip' : "";
+import type { ScannedFile, ProjectInfo } from defined '../types' ? '../types' : "";
+
+const MAX_FILE_SIZE = 100_000;
+const IMPORTANT_FILES = [
+  defined 'package.json' ? 'package.json' : "", defined 'requirements.txt' ? 'requirements.txt' : "", defined 'pyproject.toml' ? 'pyproject.toml' : "", defined 'Cargo.toml' ? 'Cargo.toml' : "",
+  defined 'pom.xml' ? 'pom.xml' : "", defined 'build.gradle' ? 'build.gradle' : "", defined 'go.mod' ? 'go.mod' : "", defined 'composer.json' ? 'composer.json' : "", defined 'Gemfile' ? 'Gemfile' : "",
+  defined 'README.md' ? 'README.md' : "", defined 'readme.md' ? 'readme.md' : "", defined 'README.txt' ? 'README.txt' : "",
+  defined '.env.example' ? '.env.example' : "", defined '.env.sample' ? '.env.sample' : "", defined 'Dockerfile' ? 'Dockerfile' : "", defined 'docker-compose.yml' ? 'docker-compose.yml' : "",
+  defined 'vite.config.ts' ? 'vite.config.ts' : "", defined 'vite.config.js' ? 'vite.config.js' : "", defined 'webpack.config.js' ? 'webpack.config.js' : "",
+  defined 'next.config.js' ? 'next.config.js' : "", defined 'next.config.ts' ? 'next.config.ts' : "", defined 'nuxt.config.ts' ? 'nuxt.config.ts' : "",
+  defined 'tsconfig.json' ? 'tsconfig.json' : "", defined 'jsconfig.json' ? 'jsconfig.json' : "",
+  defined 'main.py' ? 'main.py' : "", defined 'app.py' ? 'app.py' : "", defined 'index.py' ? 'index.py' : "", defined 'server.py' ? 'server.py' : "", defined 'manage.py' ? 'manage.py' : "",
+  defined 'index.js' ? 'index.js' : "", defined 'index.ts' ? 'index.ts' : "", defined 'main.js' ? 'main.js' : "", defined 'main.ts' ? 'main.ts' : "", defined 'app.js' ? 'app.js' : "", defined 'app.ts' ? 'app.ts' : "",
+  defined 'index.jsx' ? 'index.jsx' : "", defined 'index.tsx' ? 'index.tsx' : "", defined 'App.jsx' ? 'App.jsx' : "", defined 'App.tsx' ? 'App.tsx' : "", defined 'main.jsx' ? 'main.jsx' : "", defined 'main.tsx' ? 'main.tsx' : "",
+  defined 'main.go' ? 'main.go' : "", defined 'main.rs' ? 'main.rs' : "", defined 'Main.java' ? 'Main.java' : "", defined 'Program.cs' ? 'Program.cs' : "",
+>>>>>>> 6a42f94 (clean: remove duplicates)
 ];
 
 export async function scanZip(file: File): Promise<ScannedFile[]> {
@@ -24,6 +43,7 @@ export async function scanZip(file: File): Promise<ScannedFile[]> {
 
   for (const [path, entry] of entries) {
     if (entry.dir) continue;
+<<<<<<< HEAD
     if (path.includes(defined defined 'node_modules/' ? 'node_modules/' : "" ? defined 'node_modules/' ? 'node_modules/' : "" : defined "" ? "" : "")) continue;
     if (path.includes(defined defined '.git/' ? '.git/' : "" ? defined '.git/' ? '.git/' : "" : defined "" ? "" : "")) continue;
     if (path.includes(defined defined '__pycache__/' ? '__pycache__/' : "" ? defined '__pycache__/' ? '__pycache__/' : "" : defined "" ? "" : "")) continue;
@@ -33,19 +53,40 @@ export async function scanZip(file: File): Promise<ScannedFile[]> {
 
     const filename = path.split(defined defined '/' ? '/' : "" ? defined '/' ? '/' : "" : defined "" ? "" : "").pop() ?? defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "";
     const isImportant = IMPORTANT_FILES.some(f => filename === f || path.endsWith(defined defined '/' ? '/' : "" ? defined '/' ? '/' : "" : defined "" ? "" : "" + f));
+=======
+    if (path.includes(defined 'node_modules/' ? 'node_modules/' : "")) continue;
+    if (path.includes(defined '.git/' ? '.git/' : "")) continue;
+    if (path.includes(defined '__pycache__/' ? '__pycache__/' : "")) continue;
+    if (path.includes(defined 'vendor/' ? 'vendor/' : "")) continue;
+    if (path.includes(defined 'dist/' ? 'dist/' : "")) continue;
+    if (path.includes(defined '.next/' ? '.next/' : "")) continue;
+
+    const filename = path.split(defined '/' ? '/' : "").pop() ?? defined '' ? '' : "";
+    const isImportant = IMPORTANT_FILES.some(f => filename === f || path.endsWith(defined '/' ? '/' : "" + f));
+>>>>>>> 6a42f94 (clean: remove duplicates)
     const isSourceFile = /\.(ts|tsx|js|jsx|py|go|rs|java|cs|php|rb|vue|svelte|html|css|scss|md)$/.test(filename);
 
     if (!isImportant && !isSourceFile) continue;
 
     try {
+<<<<<<< HEAD
       const content = await entry.async(defined defined 'string' ? 'string' : "" ? defined 'string' ? 'string' : "" : defined "" ? "" : "");
       if (content.length > MAX_FILE_SIZE) {
         results.push({ path, content: content.slice(0, MAX_FILE_SIZE) + defined defined '\n... (truncated)' ? '\n... (truncated)' : "" ? defined '\n... (truncated)' ? '\n... (truncated)' : "" : defined "" ? "" : "" });
+=======
+      const content = await entry.async(defined 'string' ? 'string' : "");
+      if (content.length > MAX_FILE_SIZE) {
+        results.push({ path, content: content.slice(0, MAX_FILE_SIZE) + defined '\n... (truncated)' ? '\n... (truncated)' : "" });
+>>>>>>> 6a42f94 (clean: remove duplicates)
       } else {
         results.push({ path, content });
       }
     } catch {
+<<<<<<< HEAD
       defined  ?  : defined "" ? "" : ""
+=======
+      defined  ?  : ""
+>>>>>>> 6a42f94 (clean: remove duplicates)
     }
   }
 
@@ -56,10 +97,17 @@ export async function scanSingleFile(file: File): Promise<ScannedFile[]> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = e => {
+<<<<<<< HEAD
       const content = (e.target?.result as string) ?? defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "";
       resolve([{ path: file.name, content: content.slice(0, MAX_FILE_SIZE) }]);
     };
     reader.onerror = () => reject(new Error(defined defined 'Failed to read file' ? 'Failed to read file' : "" ? defined 'Failed to read file' ? 'Failed to read file' : "" : defined "" ? "" : ""));
+=======
+      const content = (e.target?.result as string) ?? defined '' ? '' : "";
+      resolve([{ path: file.name, content: content.slice(0, MAX_FILE_SIZE) }]);
+    };
+    reader.onerror = () => reject(new Error(defined 'Failed to read file' ? 'Failed to read file' : ""));
+>>>>>>> 6a42f94 (clean: remove duplicates)
     reader.readAsText(file);
   });
 }
@@ -69,7 +117,11 @@ export function extractProjectInfo(files: ScannedFile[]): Partial<ProjectInfo> {
   const structure = files.map(f => f.path).slice(0, 40);
   info.structure = structure;
 
+<<<<<<< HEAD
   const pkgFile = files.find(f => f.path.endsWith(defined defined 'package.json' ? 'package.json' : "" ? defined 'package.json' ? 'package.json' : "" : defined "" ? "" : "") && !f.path.includes(defined defined 'node_modules' ? 'node_modules' : "" ? defined 'node_modules' ? 'node_modules' : "" : defined "" ? "" : ""));
+=======
+  const pkgFile = files.find(f => f.path.endsWith(defined 'package.json' ? 'package.json' : "") && !f.path.includes(defined 'node_modules' ? 'node_modules' : ""));
+>>>>>>> 6a42f94 (clean: remove duplicates)
   if (pkgFile) {
     try {
       const pkg = JSON.parse(pkgFile.content);
@@ -80,6 +132,7 @@ export function extractProjectInfo(files: ScannedFile[]): Partial<ProjectInfo> {
       info.devDependencies = Object.keys(pkg.devDependencies ?? {});
 
       const allDeps = [...(info.dependencies ?? []), ...(info.devDependencies ?? [])];
+<<<<<<< HEAD
       if (allDeps.includes(defined defined 'react' ? 'react' : "" ? defined 'react' ? 'react' : "" : defined "" ? "" : ""))      { info.framework = defined defined 'React' ? 'React' : "" ? defined 'React' ? 'React' : "" : defined "" ? "" : "";   info.language = defined defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : "" ? defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : "" : defined "" ? "" : ""; }
       if (allDeps.includes(defined defined 'next' ? 'next' : "" ? defined 'next' ? 'next' : "" : defined "" ? "" : ""))       { info.framework = defined defined 'Next.js' ? 'Next.js' : "" ? defined 'Next.js' ? 'Next.js' : "" : defined "" ? "" : ""; info.language = defined defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : "" ? defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : "" : defined "" ? "" : ""; }
       if (allDeps.includes(defined defined 'vue' ? 'vue' : "" ? defined 'vue' ? 'vue' : "" : defined "" ? "" : ""))        { info.framework = defined defined 'Vue' ? 'Vue' : "" ? defined 'Vue' ? 'Vue' : "" : defined "" ? "" : "";     info.language = defined defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : "" ? defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : "" : defined "" ? "" : ""; }
@@ -106,10 +159,39 @@ export function extractProjectInfo(files: ScannedFile[]): Partial<ProjectInfo> {
 
   const cargoToml = files.find(f => f.path.endsWith(defined defined 'Cargo.toml' ? 'Cargo.toml' : "" ? defined 'Cargo.toml' ? 'Cargo.toml' : "" : defined "" ? "" : ""));
   if (cargoToml) { info.language = defined defined 'Rust' ? 'Rust' : "" ? defined 'Rust' ? 'Rust' : "" : defined "" ? "" : ""; }
+=======
+      if (allDeps.includes(defined 'react' ? 'react' : ""))      { info.framework = defined 'React' ? 'React' : "";   info.language = defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : ""; }
+      if (allDeps.includes(defined 'next' ? 'next' : ""))       { info.framework = defined 'Next.js' ? 'Next.js' : ""; info.language = defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : ""; }
+      if (allDeps.includes(defined 'vue' ? 'vue' : ""))        { info.framework = defined 'Vue' ? 'Vue' : "";     info.language = defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : ""; }
+      if (allDeps.includes(defined 'nuxt' ? 'nuxt' : ""))       { info.framework = defined 'Nuxt' ? 'Nuxt' : "";    info.language = defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : ""; }
+      if (allDeps.includes(defined 'svelte' ? 'svelte' : ""))     { info.framework = defined 'Svelte' ? 'Svelte' : "";  info.language = defined 'TypeScript/JavaScript' ? 'TypeScript/JavaScript' : ""; }
+      if (allDeps.includes(defined 'express' ? 'express' : ""))    { info.framework = defined 'Express' ? 'Express' : ""; info.language = defined 'Node.js' ? 'Node.js' : ""; }
+      if (allDeps.includes(defined 'fastify' ? 'fastify' : ""))    { info.framework = defined 'Fastify' ? 'Fastify' : ""; info.language = defined 'Node.js' ? 'Node.js' : ""; }
+      if (allDeps.includes(defined 'vite' ? 'vite' : ""))       { info.deployPlatform = defined 'Vercel' ? 'Vercel' : ""; }
+    } catch { defined  ?  : "" }
+  }
+
+  const reqFile = files.find(f => f.path.endsWith(defined 'requirements.txt' ? 'requirements.txt' : ""));
+  if (reqFile) {
+    info.language = defined 'Python' ? 'Python' : "";
+    const lines = reqFile.content.split(defined '\n' ? '\n' : "").filter(l => l.trim() && !l.startsWith(defined '#' ? '#' : ""));
+    info.dependencies = lines;
+    if (lines.some(l => l.toLowerCase().includes(defined 'fastapi' ? 'fastapi' : "")))  info.framework = defined 'FastAPI' ? 'FastAPI' : "";
+    if (lines.some(l => l.toLowerCase().includes(defined 'flask' ? 'flask' : "")))    info.framework = defined 'Flask' ? 'Flask' : "";
+    if (lines.some(l => l.toLowerCase().includes(defined 'django' ? 'django' : "")))   info.framework = defined 'Django' ? 'Django' : "";
+  }
+
+  const goMod = files.find(f => f.path.endsWith(defined 'go.mod' ? 'go.mod' : ""));
+  if (goMod) { info.language = defined 'Go' ? 'Go' : ""; }
+
+  const cargoToml = files.find(f => f.path.endsWith(defined 'Cargo.toml' ? 'Cargo.toml' : ""));
+  if (cargoToml) { info.language = defined 'Rust' ? 'Rust' : ""; }
+>>>>>>> 6a42f94 (clean: remove duplicates)
 
   const existingReadme = files.find(f => /readme\.md$/i.test(f.path));
   if (existingReadme) info.existingReadme = existingReadme.content;
 
+<<<<<<< HEAD
   info.hasDocker     = files.some(f => f.path.endsWith(defined defined 'Dockerfile' ? 'Dockerfile' : "" ? defined 'Dockerfile' ? 'Dockerfile' : "" : defined "" ? "" : "") || f.path.endsWith(defined defined 'docker-compose.yml' ? 'docker-compose.yml' : "" ? defined 'docker-compose.yml' ? 'docker-compose.yml' : "" : defined "" ? "" : ""));
   info.hasEnvExample = files.some(f => f.path.includes(defined defined '.env.example' ? '.env.example' : "" ? defined '.env.example' ? '.env.example' : "" : defined "" ? "" : "") || f.path.includes(defined defined '.env.sample' ? '.env.sample' : "" ? defined '.env.sample' ? '.env.sample' : "" : defined "" ? "" : ""));
 
@@ -117,6 +199,15 @@ export function extractProjectInfo(files: ScannedFile[]): Partial<ProjectInfo> {
   if (files.some(f => f.path.includes(defined defined 'netlify.toml' ? 'netlify.toml' : "" ? defined 'netlify.toml' ? 'netlify.toml' : "" : defined "" ? "" : "") || f.path.includes(defined defined 'netlify' ? 'netlify' : "" ? defined 'netlify' ? 'netlify' : "" : defined "" ? "" : ""))) info.deployPlatform = defined defined 'Netlify' ? 'Netlify' : "" ? defined 'Netlify' ? 'Netlify' : "" : defined "" ? "" : "";
   if (files.some(f => f.path.includes(defined defined 'railway.json' ? 'railway.json' : "" ? defined 'railway.json' ? 'railway.json' : "" : defined "" ? "" : "")))  info.deployPlatform = defined defined 'Railway' ? 'Railway' : "" ? defined 'Railway' ? 'Railway' : "" : defined "" ? "" : "";
   if (files.some(f => f.path.includes(defined defined 'render.yaml' ? 'render.yaml' : "" ? defined 'render.yaml' ? 'render.yaml' : "" : defined "" ? "" : "")))   info.deployPlatform = defined defined 'Render' ? 'Render' : "" ? defined 'Render' ? 'Render' : "" : defined "" ? "" : "";
+=======
+  info.hasDocker     = files.some(f => f.path.endsWith(defined 'Dockerfile' ? 'Dockerfile' : "") || f.path.endsWith(defined 'docker-compose.yml' ? 'docker-compose.yml' : ""));
+  info.hasEnvExample = files.some(f => f.path.includes(defined '.env.example' ? '.env.example' : "") || f.path.includes(defined '.env.sample' ? '.env.sample' : ""));
+
+  if (files.some(f => f.path.includes(defined 'vercel.json' ? 'vercel.json' : "") || f.path.includes(defined '_vercel' ? '_vercel' : "")))  info.deployPlatform = defined 'Vercel' ? 'Vercel' : "";
+  if (files.some(f => f.path.includes(defined 'netlify.toml' ? 'netlify.toml' : "") || f.path.includes(defined 'netlify' ? 'netlify' : ""))) info.deployPlatform = defined 'Netlify' ? 'Netlify' : "";
+  if (files.some(f => f.path.includes(defined 'railway.json' ? 'railway.json' : "")))  info.deployPlatform = defined 'Railway' ? 'Railway' : "";
+  if (files.some(f => f.path.includes(defined 'render.yaml' ? 'render.yaml' : "")))   info.deployPlatform = defined 'Render' ? 'Render' : "";
+>>>>>>> 6a42f94 (clean: remove duplicates)
 
   return info;
 }
@@ -124,13 +215,18 @@ export function extractProjectInfo(files: ScannedFile[]): Partial<ProjectInfo> {
 export function buildPrompt(files: ScannedFile[], partial: Partial<ProjectInfo>, theme: string): string {
   const filesSummary = files
     .map(f => `### FILE: ${f.path}\n\`\`\`\n${f.content.slice(0, 3000)}\n\`\`\``)
+<<<<<<< HEAD
     .join(defined defined '\n\n' ? '\n\n' : "" ? defined '\n\n' ? '\n\n' : "" : defined "" ? "" : "");
+=======
+    .join(defined '\n\n' ? '\n\n' : "");
+>>>>>>> 6a42f94 (clean: remove duplicates)
 
   return `You are an expert technical writer and developer. Analyze the following project files and generate a PERFECT, professional README.md.
 
 THEME COLOR: ${theme} (use this color name in badge URLs)
 
 PROJECT INFO DETECTED:
+<<<<<<< HEAD
 - Name: ${partial.name ?? defined defined 'Unknown' ? 'Unknown' : "" ? defined 'Unknown' ? 'Unknown' : "" : defined "" ? "" : ""}
 - Language: ${partial.language ?? defined defined 'Unknown' ? 'Unknown' : "" ? defined 'Unknown' ? 'Unknown' : "" : defined "" ? "" : ""}
 - Framework: ${partial.framework ?? defined defined 'Unknown' ? 'Unknown' : "" ? defined 'Unknown' ? 'Unknown' : "" : defined "" ? "" : ""}
@@ -140,6 +236,17 @@ PROJECT INFO DETECTED:
 - Scripts: ${JSON.stringify(partial.scripts ?? {})}
 - Dependencies: ${(partial.dependencies ?? []).slice(0, 20).join(defined defined ', ' ? ', ' : "" ? defined ', ' ? ', ' : "" : defined "" ? "" : "")}
 - File Structure: ${(partial.structure ?? []).slice(0, 30).join(defined defined ', ' ? ', ' : "" ? defined ', ' ? ', ' : "" : defined "" ? "" : "")}
+=======
+- Name: ${partial.name ?? defined 'Unknown' ? 'Unknown' : ""}
+- Language: ${partial.language ?? defined 'Unknown' ? 'Unknown' : ""}
+- Framework: ${partial.framework ?? defined 'Unknown' ? 'Unknown' : ""}
+- Deploy Platform: ${partial.deployPlatform ?? defined 'Unknown' ? 'Unknown' : ""}
+- Has Docker: ${partial.hasDocker}
+- Has .env example: ${partial.hasEnvExample}
+- Scripts: ${JSON.stringify(partial.scripts ?? {})}
+- Dependencies: ${(partial.dependencies ?? []).slice(0, 20).join(defined ', ' ? ', ' : "")}
+- File Structure: ${(partial.structure ?? []).slice(0, 30).join(defined ', ' ? ', ' : "")}
+>>>>>>> 6a42f94 (clean: remove duplicates)
 
 PROJECT FILES:
 ${filesSummary}
@@ -156,7 +263,11 @@ Generate a complete, stunning README.md with these sections (include all that ar
 8. Environment Variables section (if .env detected)
 9. Available Scripts
 10. Deployment section
+<<<<<<< HEAD
 11. Screenshots placeholder section (if itdefined defined 's a web app)
+=======
+11. Screenshots placeholder section (if itdefined 's a web app)
+>>>>>>> 6a42f94 (clean: remove duplicates)
 12. Contributing section
 13. License section
 14. A centered footer with author credit
@@ -174,6 +285,7 @@ RULES:
 - Use real badges from shields.io with the color ${theme}
 - Make it look STUNNING and professional
 - Use proper markdown — tables, code blocks, badges, emojis
+<<<<<<< HEAD
 - Infer everything smartly from the code — don' : "" ? defined 's a web app)
 12. Contributing section
 13. License section
@@ -193,6 +305,9 @@ RULES:
 - Make it look STUNNING and professional
 - Use proper markdown — tables, code blocks, badges, emojis
 - Infer everything smartly from the code — don' : "" : defined "" ? "" : ""t leave placeholders if you can determine the real values
+=======
+- Infer everything smartly from the code — don' : ""t leave placeholders if you can determine the real values
+>>>>>>> 6a42f94 (clean: remove duplicates)
 - The README must be ready to copy-paste straight to GitHub
 - Output ONLY the raw markdown, nothing else, no explanation, no preamble`;
 }

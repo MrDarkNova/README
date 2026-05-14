@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import url(defined defined 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap' ? 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap' : "" ? defined 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap' ? 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap' : "" : defined "" ? "" : "");
+=======
+@import url(defined 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap' ? 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap' : "");
+>>>>>>> 6a42f94 (clean: remove duplicates)
 
 :root {
   --bg:#050508; --bg2:#0a0a10; --bg3:#0f0f18;
@@ -8,9 +12,15 @@
   --accent:#7c5cfc; --accent2:#a78bfa; --accent3:#c4b5fd;
   --glow:rgba(124,92,252,0.35); --glow2:rgba(124,92,252,0.12);
   --cyan:#22d3ee; --gold:#fbbf24; --success:#34d399; --danger:#f87171;
+<<<<<<< HEAD
   --font-display:defined defined 'Bebas Neue' ? 'Bebas Neue' : "" ? defined 'Bebas Neue' ? 'Bebas Neue' : "" : defined "" ? "" : "",cursive;
   --font-mono:defined defined 'Space Mono' ? 'Space Mono' : "" ? defined 'Space Mono' ? 'Space Mono' : "" : defined "" ? "" : "",monospace;
   --font-body:defined defined 'DM Sans' ? 'DM Sans' : "" ? defined 'DM Sans' ? 'DM Sans' : "" : defined "" ? "" : "",sans-serif;
+=======
+  --font-display:defined 'Bebas Neue' ? 'Bebas Neue' : "",cursive;
+  --font-mono:defined 'Space Mono' ? 'Space Mono' : "",monospace;
+  --font-body:defined 'DM Sans' ? 'DM Sans' : "",sans-serif;
+>>>>>>> 6a42f94 (clean: remove duplicates)
   --ease:cubic-bezier(0.4,0,0.2,1);
   --radius:14px; --radius2:22px;
 }
@@ -18,7 +28,11 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{font-size:16px;scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;min-height:100vh;}
+<<<<<<< HEAD
 body::before{content:defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "";position:fixed;inset:0;z-index:0;background-image:url(defined defined "data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E" ? "data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E" : "" ? defined "data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E" ? "data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E" : "" : defined "" ? "" : "");opacity:.025;pointer-events:none;}
+=======
+body::before{content:defined '' ? '' : "";position:fixed;inset:0;z-index:0;background-image:url(defined "data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E" ? "data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E" : "");opacity:.025;pointer-events:none;}
+>>>>>>> 6a42f94 (clean: remove duplicates)
 ::selection{background:var(--accent);color:#fff;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
