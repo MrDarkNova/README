@@ -1,114 +1,54 @@
-<div align="center">
+# README Studio
 
-<img src="https://img.shields.io/badge/DARKNOVA-README%20GENERATOR-7c5cfc?style=for-the-badge&labelColor=050508&color=7c5cfc" />
-
-<br /><br />
-
-![React](https://img.shields.io/badge/React-18-7c5cfc?style=flat-square&logo=react&logoColor=7c5cfc&labelColor=050508)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-7c5cfc?style=flat-square&logo=typescript&logoColor=7c5cfc&labelColor=050508)
-![Vite](https://img.shields.io/badge/Vite-5-7c5cfc?style=flat-square&logo=vite&logoColor=7c5cfc&labelColor=050508)
-![Claude API](https://img.shields.io/badge/Claude-AI%20Powered-7c5cfc?style=flat-square&logoColor=7c5cfc&labelColor=050508)
-![Vercel](https://img.shields.io/badge/Vercel-Deploy-7c5cfc?style=flat-square&logo=vercel&logoColor=7c5cfc&labelColor=050508)
-
-<br />
-
-**Upload your project. AI scans the structure. Get a perfect README instantly.**
-
-[Live Demo](https://readme.mrdarknova.indevs.in) · [Portfolio](https://mrdarknova.indevs.in) · [GitHub](https://github.com/MrDarkNova)
-
-</div>
-
----
+README Studio scans a project ZIP or a single source file, identifies useful project details, and generates a README you can preview, copy, or download.
 
 ## Features
 
-- **Smart File Scanning** — reads `package.json`, `requirements.txt`, `Cargo.toml`, source files, configs and more
-- **AI-Generated** — Claude AI analyses your entire project and writes a professional README
-- **5 Color Themes** — Purple, Cyan, Green, Gold, Red — shields.io badges auto-match your chosen color
-- **RAW + Preview tabs** — see the raw markdown or a rendered preview before copying
-- **Copy to Clipboard** — one click copies the full markdown
-- **Download README.md** — download directly to your machine
-- **No backend needed** — runs entirely in the browser, no server required
-- **ZIP support** — upload a full project zip or any single code file
+- Drag-and-drop or file-picker upload for ZIPs and common source/configuration files
+- Project-aware detection for languages, frameworks, package scripts, and deployment configuration
+- Five badge color themes
+- README preview and raw Markdown views
+- Copy-to-clipboard and `README.md` download
+- Accessible keyboard controls, reduced-motion support, and responsive layouts
+- Bounded archive scanning that skips common secret files, dependency folders, and generated output
 
----
+## Privacy
 
-## Project Structure
+ZIP files are inspected in the browser. The scanner excludes common `.env` files, private-key formats, credential/secret filenames, dependency folders, and build output; it also redacts common credential assignments and token formats from included text. Selected text and project metadata are sent to the `/api/generate` endpoint to create the README. Automated filters cannot catch every secret, so do not upload credentials or code you are not permitted to share; check your hosting and model-provider retention policies before using private source code.
 
-```
-darknova-readme/
-├── src/
-│   ├── components/
-│   │   ├── Header.tsx              # Sticky nav with logo + AI status badge
-│   │   ├── Header.module.css
-│   │   ├── Background.tsx          # Animated grid + orb background
-│   │   ├── Background.module.css
-│   │   ├── UploadZone.tsx          # Drag & drop / click upload area
-│   │   ├── UploadZone.module.css
-│   │   ├── ThemePicker.tsx         # 5-color README theme selector
-│   │   ├── ThemePicker.module.css
-│   │   ├── ScanProgress.tsx        # Live scan + AI generation progress
-│   │   ├── ScanProgress.module.css
-│   │   ├── ReadmeOutput.tsx        # Result with copy + download buttons
-│   │   └── ReadmeOutput.module.css
-│   ├── hooks/
-│   │   └── useCursor.ts            # Custom cursor
-│   ├── utils/
-│   │   ├── scanner.ts              # JSZip extraction + project analysis
-│   │   └── api.ts                  # Claude API caller
-│   ├── types/
-│   │   └── index.ts                # All TypeScript types
-│   ├── styles/
-│   │   └── global.css              # Design tokens (matches portfolio)
-│   ├── App.tsx
-│   └── main.tsx
-├── index.html
-├── vite.config.ts
-├── tsconfig.json
-├── vercel.json
-└── package.json
+## Project structure
+
+```text
+api/
+└── generate.js          # Serverless README-generation endpoint
+src/
+├── App.tsx              # Upload, progress, preview, and download flow
+├── main.tsx             # React entry point
+├── styles/global.css    # Responsive design system
+├── types/index.ts       # Shared project and theme types
+└── utils/
+    ├── api.ts           # Generation endpoint client
+    └── scanner.ts       # ZIP safety filters and project analysis
+index.html
+vite.config.ts
+vercel.json
 ```
 
----
-
-## Stack
-
-| Layer      | Technology              |
-|------------|-------------------------|
-| UI         | React 18 + TypeScript   |
-| Bundler    | Vite 5                  |
-| Styling    | CSS Modules             |
-| ZIP Reader | JSZip                   |
-| AI         | Claude API (built-in)   |
-| Deployment | Vercel                  |
-
----
-
-## Setup
+## Run locally
 
 ```bash
-git clone https://github.com/MrDarkNova/DarkNova-README.git
-cd DarkNova-README
+git clone https://github.com/MrDarkNova/README.git
+cd README
 npm install
-npm run dev
+npx vercel dev
 ```
 
----
+Vercel's local development server runs both the Vite app and the `/api/generate` function. To run the UI by itself, use `npm run dev`; the generation endpoint requires the serverless runtime.
 
-## Deploy
+Create a production build with:
 
 ```bash
 npm run build
-vercel --prod
 ```
 
----
-
-<div align="center">
-
-**Built by [MR. DARKNOVA](https://mrdarknova.indevs.in)**
-
-![](https://img.shields.io/badge/300L-AFIT%20Kaduna-7c5cfc?style=flat-square&labelColor=050508)
-![](https://img.shields.io/badge/Nigeria-Developer-7c5cfc?style=flat-square&labelColor=050508)
-
-</div>
+Deploy the repository with Vercel to publish the app and its API function.
