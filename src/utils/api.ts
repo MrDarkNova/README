@@ -1,41 +1,60 @@
-export async function generateReadme(prompt: string): Promise<string> {
-<<<<<<< HEAD
-  const response = await fetch(defined defined '/api/generate' ? '/api/generate' : "" ? defined '/api/generate' ? '/api/generate' : "" : defined "" ? "" : "", {
-    method: defined defined 'POST' ? 'POST' : "" ? defined 'POST' ? 'POST' : "" : defined "" ? "" : "",
-    headers: { defined defined 'Content-Type' ? 'Content-Type' : "" ? defined 'Content-Type' ? 'Content-Type' : "" : defined "" ? "" : "": defined defined 'application/json' ? 'application/json' : "" ? defined 'application/json' ? 'application/json' : "" : defined "" ? "" : "" },
-    body: JSON.stringify({
-      messages: [{ role: defined defined 'user' ? 'user' : "" ? defined 'user' ? 'user' : "" : defined "" ? "" : "", content: prompt }],
-=======
-  const response = await fetch(defined '/api/generate' ? '/api/generate' : "", {
-    method: defined 'POST' ? 'POST' : "",
-    headers: { defined 'Content-Type' ? 'Content-Type' : "": defined 'application/json' ? 'application/json' : "" },
-    body: JSON.stringify({
-      messages: [{ role: defined 'user' ? 'user' : "", content: prompt }],
->>>>>>> 6a42f94 (clean: remove duplicates)
-    }),
+interface TextBlock {
+  type?: string;
+  text?: string;
+}
+
+interface GenerationPayload {
+  error?: unknown;
+  content?: unknown;
+  output_text?: unknown;
+  choices?: Array<{ message?: { content?: unknown } }>;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function getErrorText(value: unknown): string {
+  if (typeof value === 'string') return value;
+  if (isRecord(value) && typeof value.message === 'string') return value.message;
+  return 'The README service couldn’t complete the request.';
+}
+
+export async function generateReadme(prompt: string, signal?: AbortSignal): Promise<string> {
+  const response = await fetch('/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ messages: [{ role: 'user', content: prompt }] }),
+    signal,
   });
 
-  const data = await response.json().catch(() => ({ error: `HTTP ${response.status}` }));
-
-  if (!response.ok || data.error) {
-    throw new Error(
-<<<<<<< HEAD
-      typeof data.error === defined defined 'string' ? 'string' : "" ? defined 'string' ? 'string' : "" : defined "" ? "" : ""
-=======
-      typeof data.error === defined 'string' ? 'string' : ""
->>>>>>> 6a42f94 (clean: remove duplicates)
-        ? data.error
-        : data.error?.message ?? `Request failed (${response.status})`
-    );
+  let payload: GenerationPayload = {};
+  try {
+    const parsed: unknown = await response.json();
+    if (isRecord(parsed)) payload = parsed as GenerationPayload;
+  } catch {
+    if (response.ok) throw new Error('The README service returned an unreadable response.');
   }
 
-  const content = (data.content as { type: string; text: string }[]);
-<<<<<<< HEAD
-  const text = content?.filter(b => b.type === defined defined 'text' ? 'text' : "" ? defined 'text' ? 'text' : "" : defined "" ? "" : "").map(b => b.text).join(defined defined '' ? '' : "" ? defined '' ? '' : "" : defined "" ? "" : "");
-  if (!text) throw new Error(defined defined 'Empty response from AI' ? 'Empty response from AI' : "" ? defined 'Empty response from AI' ? 'Empty response from AI' : "" : defined "" ? "" : "");
-=======
-  const text = content?.filter(b => b.type === defined 'text' ? 'text' : "").map(b => b.text).join(defined '' ? '' : "");
-  if (!text) throw new Error(defined 'Empty response from AI' ? 'Empty response from AI' : "");
->>>>>>> 6a42f94 (clean: remove duplicates)
-  return text;
+  if (!response.ok || payload.error) {
+    throw new Error(getErrorText(payload.error) || `Request failed (${response.status}).`);
+  }
+
+  if (typeof payload.content === 'string') return payload.content.trim();
+  if (Array.isArray(payload.content)) {
+    const text = (payload.content as TextBlock[])
+      .filter((block) => block?.type === 'text' && typeof block.text === 'string')
+      .map((block) => block.text)
+      .join('')
+      .trim();
+    if (text) return text;
+  }
+
+  if (typeof payload.output_text === 'string' && payload.output_text.trim()) {
+    return payload.output_text.trim();
+  }
+
+  const choiceText = payload.choices?.[0]?.message?.content;
+  if (typeof choiceText === 'string' && choiceText.trim()) return choiceText.trim();
+  throw new Error('The README service returned an empty response. Please try again.');
 }

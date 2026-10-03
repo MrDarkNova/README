@@ -1,43 +1,54 @@
-<div align="center">
+# README Studio
 
-<img src="https://img.shields.io/badge/DARKNOVA-README%20STUDIO-7c5cfc?style=for-the-badge&labelColor=050508&color=7c5cfc" />
-
-<br /><br />
-
-![React](https://img.shields.io/badge/React-18-7c5cfc?style=flat-square&logo=react&logoColor=7c5cfc&labelColor=050508)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-7c5cfc?style=flat-square&logo=typescript&logoColor=7c5cfc&labelColor=050508)
-![Vite](https://img.shields.io/badge/Vite-5-7c5cfc?style=flat-square&logo=vite&logoColor=7c5cfc&labelColor=050508)
-![Vercel](https://img.shields.io/badge/Vercel-Live-7c5cfc?style=flat-square&logo=vercel&logoColor=7c5cfc&labelColor=050508)
-
-<br />
-
-**Upload a project. Get a README. Copy or download.**
-
-[Live demo](https://readme.mrdarknova.indevs.in) · [Portfolio](https://www.mrdarknova.com)
-
-</div>
-
----
+README Studio scans a project ZIP or a single source file, identifies useful project details, and generates a README you can preview, copy, or download.
 
 ## Features
 
-- Reads ZIP / source files in the browser
-- Live markdown preview
-- Copy and download `README.md`
-- DarkNova color tokens
+- Drag-and-drop or file-picker upload for ZIPs and common source/configuration files
+- Project-aware detection for languages, frameworks, package scripts, and deployment configuration
+- Five badge color themes
+- README preview and raw Markdown views
+- Copy-to-clipboard and `README.md` download
+- Accessible keyboard controls, reduced-motion support, and responsive layouts
+- Bounded archive scanning that skips common secret files, dependency folders, and generated output
 
-## Run
+## Privacy
 
-```bash
-npm install
-npm run dev
+ZIP files are inspected in the browser. The scanner excludes common `.env` files, private-key formats, credential/secret filenames, dependency folders, and build output; it also redacts common credential assignments and token formats from included text. Selected text and project metadata are sent to the `/api/generate` endpoint to create the README. Automated filters cannot catch every secret, so do not upload credentials or code you are not permitted to share; check your hosting and model-provider retention policies before using private source code.
+
+## Project structure
+
+```text
+api/
+└── generate.js          # Serverless README-generation endpoint
+src/
+├── App.tsx              # Upload, progress, preview, and download flow
+├── main.tsx             # React entry point
+├── styles/global.css    # Responsive design system
+├── types/index.ts       # Shared project and theme types
+└── utils/
+    ├── api.ts           # Generation endpoint client
+    └── scanner.ts       # ZIP safety filters and project analysis
+index.html
+vite.config.ts
+vercel.json
 ```
 
-<div align="center">
+## Run locally
 
-**Built by [MR. DARKNOVA](https://www.mrdarknova.com)**
+```bash
+git clone https://github.com/MrDarkNova/README.git
+cd README
+npm install
+npx vercel dev
+```
 
-![](https://img.shields.io/badge/AFIT-Kaduna-7c5cfc?style=flat-square&labelColor=050508)
-![](https://img.shields.io/badge/Nigeria-Developer-7c5cfc?style=flat-square&labelColor=050508)
+Vercel's local development server runs both the Vite app and the `/api/generate` function. To run the UI by itself, use `npm run dev`; the generation endpoint requires the serverless runtime.
 
-</div>
+Create a production build with:
+
+```bash
+npm run build
+```
+
+Deploy the repository with Vercel to publish the app and its API function.
