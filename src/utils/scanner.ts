@@ -249,6 +249,7 @@ export function buildPrompt(files: ScannedFile[], info: ProjectInfo, theme: Them
     `Project structure: ${info.structure.slice(0, 24).join(', ')}`,
     '',
     'Create concise documentation with a useful overview, verified features, stack, setup and run commands, configuration only when supported by the files, and deployment guidance when detectable. Use valid Markdown and real shields.io badge URLs. Do not include placeholder sections or a fabricated license.',
+    'Never create a Password, Secrets, or Credentials section. Never include a password, token, API key, secret, or credential value, and never invent a default password.',
     '',
     'Relevant file excerpts:',
   ].join('\n');

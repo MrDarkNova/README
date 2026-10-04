@@ -14,7 +14,7 @@ README Studio scans a project ZIP or a single source file, identifies useful pro
 
 ## Privacy
 
-ZIP files are inspected in the browser. The scanner excludes common `.env` files, private-key formats, credential/secret filenames, dependency folders, and build output; it also redacts common credential assignments and token formats from included text. Selected text and project metadata are sent to the `/api/generate` endpoint to create the README. Automated filters cannot catch every secret, so do not upload credentials or code you are not permitted to share; check your hosting and model-provider retention policies before using private source code.
+ZIP files are inspected in the browser. The scanner excludes common `.env` files, private-key formats, credential/secret filenames, dependency folders, and build output; it also redacts common credential assignments and token formats from included text. Selected text and project metadata are sent to `/api/generate`, which uses AI Horde’s free, community-powered text workers. Anonymous requests have lower priority and may queue. No user password or account key is required, but prompts are processed by volunteer workers, so only upload code you are allowed to share. Automated filters cannot catch every secret.
 
 ## Project structure
 

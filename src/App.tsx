@@ -153,7 +153,7 @@ export default function App() {
               </ul>
               <div className="hero-note">
                 <span className="note-icon" aria-hidden="true">i</span>
-                <p>Common secrets are filtered or redacted. Selected project text is sent to the README generation service.</p>
+                <p>Common secrets are filtered or redacted. Selected project text is sent to AI Horde’s community model workers; only upload code you are allowed to share.</p>
               </div>
             </section>
 
